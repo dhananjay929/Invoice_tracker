@@ -1,8 +1,5 @@
 {
   "build": {
-    "builder": "NIXPACKS"
-  },
-  "deploy": {
-    "startCommand": "cd backend && php -S 0.0.0.0:$PORT"
+    "builder": "DOCKERFILE"
   }
 }
