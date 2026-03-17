@@ -1,15 +1,10 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-# Install required extensions
+# Install extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Disable conflicting MPMs and keep prefork
-RUN a2dismod mpm_event || true
-RUN a2dismod mpm_worker || true
-RUN a2enmod mpm_prefork
+WORKDIR /app
 
-# Enable rewrite (optional)
-RUN a2enmod rewrite
+COPY backend/ /app
 
-# Copy backend code
-COPY backend/ /var/www/html/
+CMD php -S 0.0.0.0:$PORT index.php
