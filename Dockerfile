@@ -1,5 +1,7 @@
 FROM php:8.2-cli
 
+# force rebuild
+
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 WORKDIR /app
