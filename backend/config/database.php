@@ -3,16 +3,17 @@
 //  DATABASE CONFIG — Only file you need to edit before setup
 // ============================================================
 
-define('DB_HOST',     'localhost');
-define('DB_NAME',     'invoice_tracker');
+define('DB_HOST',     'mysql://root:OkyiyyvEUDztwdbMmmxdwbAzpUWevKoj@turntable.proxy.rlwy.net:32592/railway');
+define('DB_NAME',     'railway');
 define('DB_USER',     'root');
-define('DB_PASS',     '');          // WAMP default is empty
+define('DB_PASS',     'OkyiyyvEUDztwdbMmmxdwbAzpUWevKoj');          
+define('DB_PORT',     '3306');          
 define('DB_CHARSET',  'utf8mb4');
 
 // App settings
-define('APP_URL',     'http://localhost/invoice-tracker/backend');
+define('APP_URL',     'https://invoicetracker-production.up.railway.app/');
 define('APP_NAME',    'InvoTrack');
-define('JWT_SECRET',  'CHANGE_THIS_TO_A_RANDOM_STRING_invoice2024!');
+define('JWT_SECRET',  'this_is_top_secret_invoice2026!');
 
 // Mail settings (use Mailtrap for testing)
 define('MAIL_HOST',     'sandbox.smtp.mailtrap.io');
