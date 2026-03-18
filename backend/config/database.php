@@ -3,11 +3,11 @@
 //  DATABASE CONFIG — Only file you need to edit before setup
 // ============================================================
 
-define('DB_HOST',     'mysql://root:OkyiyyvEUDztwdbMmmxdwbAzpUWevKoj@turntable.proxy.rlwy.net:32592/railway');
+define('DB_HOST',     'turntable.proxy.rlwy.net');
 define('DB_NAME',     'railway');
 define('DB_USER',     'root');
 define('DB_PASS',     'OkyiyyvEUDztwdbMmmxdwbAzpUWevKoj');          
-define('DB_PORT',     '3306');          
+define('DB_PORT',     '32592');          
 define('DB_CHARSET',  'utf8mb4');
 
 // App settings
