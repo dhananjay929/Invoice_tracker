@@ -1,5 +1,15 @@
 <?php
 // Route all requests to the correct API file
+if ($_SERVER['REQUEST_URI'] === '/debug-env') {
+    echo json_encode([
+        'MYSQLHOST'     => getenv('MYSQLHOST'),
+        'MYSQLPORT'     => getenv('MYSQLPORT'),
+        'MYSQLUSER'     => getenv('MYSQLUSER'),
+        'MYSQL_DATABASE'=> getenv('MYSQL_DATABASE'),
+        'MYSQLPASSWORD' => getenv('MYSQLPASSWORD') ? 'SET' : 'NOT SET',
+    ]);
+    exit;
+}
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = rtrim($uri, '/');
