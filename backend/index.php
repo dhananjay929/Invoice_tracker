@@ -1,5 +1,31 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Route all requests to the correct API file
 
-echo "App is working!";
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = rtrim($uri, '/');
+
+$routes = [
+    '/api/auth/login'    => __DIR__ . '/api/auth/login.php',
+    '/api/auth/register' => __DIR__ . '/api/auth/register.php',
+    '/api/auth/me'       => __DIR__ . '/api/auth/me.php',
+    '/api/clients'       => __DIR__ . '/api/clients/index.php',
+    '/api/invoices'      => __DIR__ . '/api/invoices/index.php',
+    '/api/invoices/pdf'  => __DIR__ . '/api/invoices/pdf.php',
+    '/api/invoices/send' => __DIR__ . '/api/invoices/send.php',
+    '/api/payments'      => __DIR__ . '/api/payments/index.php',
+    '/api/expenses'      => __DIR__ . '/api/expenses/index.php',
+    '/api/reports'       => __DIR__ . '/api/reports/index.php',
+    '/api/dashboard'     => __DIR__ . '/api/dashboard/index.php',
+];
+
+if ($uri === '' || $uri === '/') {
+    echo json_encode(['status' => 'ok', 'message' => 'InvoTrack API running']);
+    exit;
+}
+
+if (isset($routes[$uri])) {
+    require $routes[$uri];
+} else {
+    http_response_code(404);
+    echo json_encode(['error' => 'Route not found: ' . $uri]);
+}

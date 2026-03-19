@@ -26,10 +26,10 @@ class Auth {
     public static function user(): ?array {
     // Apache sometimes strips Authorization header — check multiple sources
     $header = $_SERVER['HTTP_AUTHORIZATION']
-           ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
-           ?? apache_request_headers()['Authorization']
-           ?? apache_request_headers()['authorization']
-           ?? '';
+                ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+                ?? getallheaders()['Authorization']     // built-in PHP, works everywhere
+                ?? getallheaders()['authorization']
+                ?? '';
 
     if (!str_starts_with($header, 'Bearer ')) return null;  
 
