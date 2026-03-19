@@ -6,10 +6,9 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': {
-        target: 'http://localhost',
-        changeOrigin: true,
-        rewrite: (path) => '/invoice-php/backend' + path,
+  '/api': {
+        target: 'http://localhost/invoice-php/backend',   
+        changeOrigin: true,                
       }
     }
   }
