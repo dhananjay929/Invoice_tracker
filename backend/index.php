@@ -1,8 +1,25 @@
 <?php
+
+// Handle CORS preflight OPTIONS request FIRST before anything else
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+    if (preg_match('/^https:\/\/.*\.vercel\.app$/', $origin) || $origin === 'http://localhost:5173') {
+        header("Access-Control-Allow-Origin: $origin");
+    }
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization, Accept");
+    header("Access-Control-Allow-Credentials: true");
+    http_response_code(200);
+    exit;
+}
+
 // Route all requests to the correct API file
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = rtrim($uri, '/');
+
+// Strip .php extension if present
 $uri = preg_replace('/\.php$/', '', $uri);
+
 $routes = [
     '/api/auth/login'    => __DIR__ . '/api/auth/login.php',
     '/api/auth/register' => __DIR__ . '/api/auth/register.php',
