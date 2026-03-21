@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { Zap, ArrowRight } from 'lucide-react'
-import axios from 'axios'
+import api from '../lib/api'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -13,9 +13,7 @@ export default function Login() {
     e.preventDefault()
     setLoading(true)
     try {
-      const response = await axios.post('/api/auth/login.php', form, {
-        headers: { 'Content-Type': 'application/json' }
-      })
+      const response = await api.post('/auth/login.php', form)
 
       const data = response.data
 
