@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-// Reads from .env file — works both locally and on Vercel
 const BASE_URL = import.meta.env.VITE_API_URL
 
 function getToken() {
