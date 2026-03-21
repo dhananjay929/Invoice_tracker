@@ -2,7 +2,7 @@
 
 // ── CORS headers (allow React dev server to call this API) ──
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$allowed = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'];
+$allowed = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173','https://invoice-tracker-sigma-mocha.vercel.app'];
 
 if (in_array($origin, $allowed)) {
     header("Access-Control-Allow-Origin: $origin");
