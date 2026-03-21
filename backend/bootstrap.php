@@ -1,10 +1,18 @@
 <?php
 
-// ── CORS headers (allow React dev server to call this API) ──
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$allowed = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173','https://invoice-tracker-sigma-mocha.vercel.app'];
 
-if (in_array($origin, $allowed)) {
+$allowed = [
+    'http://localhost:5173',
+    'http://localhost:3000', 
+    'http://127.0.0.1:5173',
+    'https://invoice-pilot-khaki.vercel.app'
+];
+
+// Allow any vercel.app subdomain automatically
+if (preg_match('/^https:\/\/.*\.vercel\.app$/', $origin)) {
+    header("Access-Control-Allow-Origin: $origin");
+} elseif (in_array($origin, $allowed)) {
     header("Access-Control-Allow-Origin: $origin");
 } else {
     header("Access-Control-Allow-Origin: http://localhost:5173");
