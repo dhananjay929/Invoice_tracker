@@ -1,8 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import axios from 'axios'
 
-// ✅ Use env variable
-const BASE_URL = import.meta.env.VITE_API_URL
+const BASE_URL = import.meta.env.VITE_API_URL  // ✅ reads from .env
 
 const AuthContext = createContext(null)
 
@@ -15,7 +14,7 @@ export function AuthProvider({ children }) {
   })
 
   const login = async (email, password) => {
-    const response = await axios.post(BASE_URL + '/api/auth/login.php',  
+    const response = await axios.post(BASE_URL + '/api/auth/login.php',  // ✅ fixed
       { email, password },
       { headers: { 'Content-Type': 'application/json' } }
     )
@@ -27,7 +26,7 @@ export function AuthProvider({ children }) {
   }
 
   const register = async (payload) => {
-    const response = await axios.post(BASE_URL + '/api/auth/register.php',  
+    const response = await axios.post(BASE_URL + '/api/auth/register.php',  // ✅ fixed
       payload,
       { headers: { 'Content-Type': 'application/json' } }
     )
