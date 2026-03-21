@@ -21,17 +21,23 @@ $uri = rtrim($uri, '/');
 $uri = preg_replace('/\.php$/', '', $uri);
 
 $routes = [
-    '/api/auth/login'    => __DIR__ . '/api/auth/login.php',
-    '/api/auth/register' => __DIR__ . '/api/auth/register.php',
-    '/api/auth/me'       => __DIR__ . '/api/auth/me.php',
-    '/api/clients'       => __DIR__ . '/api/clients/index.php',
-    '/api/invoices'      => __DIR__ . '/api/invoices/index.php',
-    '/api/invoices/pdf'  => __DIR__ . '/api/invoices/pdf.php',
-    '/api/invoices/send' => __DIR__ . '/api/invoices/send.php',
-    '/api/payments'      => __DIR__ . '/api/payments/index.php',
-    '/api/expenses'      => __DIR__ . '/api/expenses/index.php',
-    '/api/reports'       => __DIR__ . '/api/reports/index.php',
-    '/api/dashboard'     => __DIR__ . '/api/dashboard/index.php',
+    '/api/auth/login'         => __DIR__ . '/api/auth/login.php',
+    '/api/auth/register'      => __DIR__ . '/api/auth/register.php',
+    '/api/auth/me'            => __DIR__ . '/api/auth/me.php',
+    '/api/clients'            => __DIR__ . '/api/clients/index.php',
+    '/api/clients/index'      => __DIR__ . '/api/clients/index.php',
+    '/api/invoices'           => __DIR__ . '/api/invoices/index.php',
+    '/api/invoices/index'     => __DIR__ . '/api/invoices/index.php',
+    '/api/invoices/pdf'       => __DIR__ . '/api/invoices/pdf.php',
+    '/api/invoices/send'      => __DIR__ . '/api/invoices/send.php',
+    '/api/payments'           => __DIR__ . '/api/payments/index.php',
+    '/api/payments/index'     => __DIR__ . '/api/payments/index.php',
+    '/api/expenses'           => __DIR__ . '/api/expenses/index.php',
+    '/api/expenses/index'     => __DIR__ . '/api/expenses/index.php',
+    '/api/reports'            => __DIR__ . '/api/reports/index.php',
+    '/api/reports/index'      => __DIR__ . '/api/reports/index.php',
+    '/api/dashboard'          => __DIR__ . '/api/dashboard/index.php',
+    '/api/dashboard/index'    => __DIR__ . '/api/dashboard/index.php',
 ];
 
 if ($uri === '' || $uri === '/') {
